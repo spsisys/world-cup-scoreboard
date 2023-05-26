@@ -3,6 +3,10 @@
  */
 package com.spsisys.scoreboard;
 
+import com.spsisys.scoreboard.exceptions.TeamIsPlayingException;
+import com.spsisys.scoreboard.entities.Team;
+import com.spsisys.scoreboard.entities.Game;
+
 public class Library {
     public boolean someLibraryMethod() {
         return true;
