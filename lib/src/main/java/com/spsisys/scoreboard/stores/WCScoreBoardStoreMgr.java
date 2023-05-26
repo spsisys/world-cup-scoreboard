@@ -1,4 +1,4 @@
-package com.spsisys.scoreboard.store;
+package com.spsisys.scoreboard.stores;
 
 import com.spsisys.scoreboard.entities.Game;
 import com.spsisys.scoreboard.entities.Team;
@@ -19,6 +19,7 @@ public class WCScoreBoardStoreMgr implements WCScoreBoardStore {
         return this.generateTeamsKey(game.getHomeTeam(), game.getAwayTeam());
     }
 
+    // Class members
     @Override
     public void putGame(Game game) {
         this.games.put(generateGameKey(game), game);
@@ -47,7 +48,8 @@ public class WCScoreBoardStoreMgr implements WCScoreBoardStore {
     @Override
     public Game getGameByTeam(Team team) {
         for (Game game : this.games.values()) {
-            if (game.getHomeTeam().getId().equals(team.getId()) || game.getAwayTeam().getId().equals(team.getId())) {
+            if (game.getHomeTeam().getId().equals(team.getId())
+                    || game.getAwayTeam().getId().equals(team.getId())) {
                 return game;
             }
         }

@@ -1,19 +1,23 @@
 package com.spsisys.scoreboard.entities;
 
+import java.util.Date;
+
 public class Game {
     Integer id;
     Team homeTeam;
     Team awayTeam;
     Integer homeTeamScore;
     Integer awayTeamScore;
+    Date startDate;
 
     // Constructors
-    public Game(Integer id, Team homeTeam, Team awayTeam, Integer homeTeamScore, Integer awayTeamScore) {
+    public Game(Integer id, Team homeTeam, Team awayTeam, Integer homeTeamScore, Integer awayTeamScore, Date startDate) {
         this.id = id;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.homeTeamScore = homeTeamScore;
         this.awayTeamScore = awayTeamScore;
+        this.startDate = startDate;
     }
 
     public Game(Team homeTeam, Team awayTeam) {
@@ -23,13 +27,20 @@ public class Game {
         this.awayTeamScore = 0;
     }
 
+    public Game(Team homeTeam, Team awayTeam, Date startDate) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.homeTeamScore = 0;
+        this.awayTeamScore = 0;
+        this.startDate = startDate;
+    }
+
     // Getters & Setters
     public Team getHomeTeam() {
         return homeTeam;
     }
 
     public void setHomeTeam(Team homeTeam) {
-        this.homeTeamScore = 0;
         this.homeTeam = homeTeam;
     }
 
@@ -38,7 +49,6 @@ public class Game {
     }
 
     public void setAwayTeam(Team awayTeam) {
-        this.awayTeamScore = 0;
         this.awayTeam = awayTeam;
     }
 
@@ -61,6 +71,14 @@ public class Game {
     public String toString() {
         return this.getHomeTeam().getName() + " " + this.getHomeTeamScore() + " - " + this.getAwayTeamScore() + " "
                 + this.getAwayTeam().getName();
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
 
     public Integer getId() {

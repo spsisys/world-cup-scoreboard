@@ -1,4 +1,4 @@
-package com.spsisys.scoreboard.store;
+package com.spsisys.scoreboard.stores;
 
 import com.spsisys.scoreboard.entities.Game;
 import com.spsisys.scoreboard.entities.Team;
