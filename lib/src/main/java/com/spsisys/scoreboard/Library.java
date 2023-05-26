@@ -3,12 +3,54 @@
  */
 package com.spsisys.scoreboard;
 
-import com.spsisys.scoreboard.exceptions.TeamIsPlayingException;
-import com.spsisys.scoreboard.entities.Team;
 import com.spsisys.scoreboard.entities.Game;
+import com.spsisys.scoreboard.entities.Team;
+import com.spsisys.scoreboard.exceptions.TeamIsPlayingException;
+import com.spsisys.scoreboard.stores.WCScoreBoardStoreMgr;
+import com.spsisys.scoreboard.services.WCScoreBoardService;
+import com.spsisys.scoreboard.services.WCScoreBoardServiceMgr;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Library {
-    public boolean someLibraryMethod() {
-        return true;
+
+    private final WCScoreBoardService service;
+
+    public Library() {
+        this.service = new WCScoreBoardServiceMgr(new WCScoreBoardStoreMgr());
+    }
+
+    // 1. Start a game
+    public Game startGame(Team homeTeam, Team awayTeam) throws TeamIsPlayingException {
+        return this.service.startGame(homeTeam, awayTeam);
+    }
+
+    // 2. Finish game
+    public void finishGame(Game game) {
+        this.service.finishGame(game.getHomeTeam(), game.getAwayTeam());
+    }
+
+    public void finishGame(Team homeTeam, Team awayTeam) {
+        this.service.finishGame(homeTeam, awayTeam);
+    }
+
+    // 3. Update score
+    public void updateScore(Team homeTeam, Team awayTeam, int homeScore, int awayScore) {
+        this.service.updateScore(homeTeam, awayTeam, homeScore, awayScore);
+    }
+
+    public void updateScore(Game game, int homeScore, int awayScore) {
+        this.service.updateScore(game.getHomeTeam(), game.getAwayTeam(), homeScore, awayScore);
+    }
+
+    // 4. Get a summary of games by total score (simple)
+    public List<Game> getSummary() {
+        return this.service.getSummary();
+    }
+
+    // 4. Get a summary of games by total score (joining with \n to split lines using CRLF)
+    public String getSumaryAsString() {
+        return this.getSummary().stream().map(Object::toString).collect(Collectors.joining("\n"));
     }
 }

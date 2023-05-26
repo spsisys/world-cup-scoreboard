@@ -82,6 +82,7 @@ public class WCScoreBoardServiceMgr implements WCScoreBoardService {
     @Override
     public List<Game> getSummary() {
         List<Game> games = this.store.getGames();
+        // Comparator will never return 0, so we need to sort by date if the scores are the same
         games.sort((game1, game2) -> {
             if (WCScoreBoardUtils.getTotalScore(game1) > WCScoreBoardUtils.getTotalScore(game2)) {
                 return -1;
