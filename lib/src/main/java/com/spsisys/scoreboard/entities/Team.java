@@ -4,16 +4,13 @@ public class Team {
     Integer id;
     String name;
 
+    // Constructors
     public Team(Integer id, String name) {
         this.id = id;
         this.name = name;
     }
 
-    // TODO: default constructor
-    public Team() {
-    }
-
-    // getters and setters
+    // Getters & Setters
     public Integer getId() {
         return id;
     }
