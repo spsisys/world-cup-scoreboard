@@ -5,7 +5,7 @@ import com.spsisys.scoreboard.exceptions.TeamIsPlayingException;
 import com.spsisys.scoreboard.stores.TrialAppData;
 
 public class TrialApp {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         Library library = new Library();
 
         Game game1;
@@ -22,10 +22,10 @@ public class TrialApp {
             game5 = library.startGame(TrialAppData.ARGENTINA, TrialAppData.AUSTRALIA);
 
             library.updateScore(game1, 0, 5);
-            library.updateScore(game2, 0, 5);
-            library.updateScore(game3, 0, 5);
-            library.updateScore(game4, 0, 5);
-            library.updateScore(game5, 0, 5);
+            library.updateScore(game2, 10, 2);
+            library.updateScore(game3, 2, 2);
+            library.updateScore(game4, 6, 6);
+            library.updateScore(game5, 3, 1);
         } catch (TeamIsPlayingException e) {
         } catch (Exception e) {
             e.printStackTrace();
