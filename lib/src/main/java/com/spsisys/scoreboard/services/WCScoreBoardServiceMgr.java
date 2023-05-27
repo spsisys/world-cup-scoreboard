@@ -8,6 +8,7 @@ import com.spsisys.scoreboard.utils.WCScoreBoardUtils;
 
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class WCScoreBoardServiceMgr implements WCScoreBoardService {
     private final WCScoreBoardStore store;
@@ -78,7 +79,7 @@ public class WCScoreBoardServiceMgr implements WCScoreBoardService {
     }
 
     // 4. Get a summary of games by total score. Those games with the same total score will be returned
-    // ordered by the most recently added to our system
+    // ordered by the most recently added to our system (simple)
     @Override
     public List<Game> getSummary() {
         List<Game> games = this.store.getGames();
@@ -92,6 +93,13 @@ public class WCScoreBoardServiceMgr implements WCScoreBoardService {
             return game1.getStartDate().before(game2.getStartDate()) ? 1 : -1;
         });
         return games;
+    }
+
+    // 4. Get a summary of games by total score. Those games with the same total score will be returned
+    // ordered by the most recently added to our system (joining with \n to split lines using CRLF)
+    @Override
+    public String getSummaryAsString() {
+        return this.getSummary().stream().map(Object::toString).collect(Collectors.joining("\n"));
     }
 }
 

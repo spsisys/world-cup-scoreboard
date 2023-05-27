@@ -16,7 +16,11 @@ public interface WCScoreBoardService {
     // 3. Update score. Receiving the pair score; home team score and away team score updates a game score
     void updateScore(Team homeTeam, Team awayTeam, int homeTeamScore, int awayTeamScore);
 
-    // Get a summary of games by total score. Those games with the same total score will be returned
-    // ordered by the most recently added to our system
+    // 4. Get a summary of games by total score. Those games with the same total score will be returned
+    // ordered by the most recently added to our system (as List of Games)
     List<Game> getSummary();
+
+    // 4. Get a summary of games by total score. Those games with the same total score will be returned
+    // ordered by the most recently added to our system (as String representation of the List of Games)
+    String getSummaryAsString();
 }

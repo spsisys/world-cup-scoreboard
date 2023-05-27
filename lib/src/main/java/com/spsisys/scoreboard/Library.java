@@ -11,7 +11,6 @@ import com.spsisys.scoreboard.services.WCScoreBoardService;
 import com.spsisys.scoreboard.services.WCScoreBoardServiceMgr;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Library {
 
@@ -44,13 +43,12 @@ public class Library {
         this.service.updateScore(game.getHomeTeam(), game.getAwayTeam(), homeScore, awayScore);
     }
 
-    // 4. Get a summary of games by total score (simple)
+    // 4. Get a summary of games by total score
     public List<Game> getSummary() {
         return this.service.getSummary();
     }
 
-    // 4. Get a summary of games by total score (joining with \n to split lines using CRLF)
-    public String getSumaryAsString() {
-        return this.getSummary().stream().map(Object::toString).collect(Collectors.joining("\n"));
+    public String getSummaryAsString() {
+        return this.service.getSummaryAsString();
     }
 }
