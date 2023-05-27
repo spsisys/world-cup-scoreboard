@@ -39,4 +39,9 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
+task run(type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.spsisys.scoreboard.TrialApp'
+}
+
 version = '0.1.0'
